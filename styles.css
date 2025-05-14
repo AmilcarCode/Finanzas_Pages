@@ -1,0 +1,369 @@
+/* styles.css */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #0f0f1a;
+    color: #e0e0f0;
+    padding: 0;
+    background-image: radial-gradient(circle at 20% 20%, #1f1f2e, #0f0f1a);
+}
+
+/* Contenedor con borde neón */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(25, 25, 40, 0.85);
+    border: 2px solid #00fff7;
+    border-radius: 16px;
+    box-shadow: 0 0 20px rgba(0, 255, 247, 0.2);
+}
+
+/* Estadísticas con glow */
+.stats-cards {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    flex: 1;
+    min-width: 200px;
+    background: linear-gradient(145deg, #1a1a2e, #101021);
+    border: 1px solid #00fff7;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0, 255, 247, 0.15);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(0, 255, 247, 0.4);
+}
+
+.stat-card h3 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #00ffe1;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+/* Formularios */
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #00ffe1;
+}
+
+/* Inputs y selects */
+input, select {
+    padding: 14px;
+    font-size: 1rem;
+    border: 1px solid #00ffe1;
+    border-radius: 8px;
+    background-color: #1a1a2e;
+    color: #ffffff;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+input:focus, select:focus {
+    border-color: #00ffc6;
+    box-shadow: 0 0 8px #00ffc6;
+    outline: none;
+}
+
+/* Botón futurista */
+button {
+    background: linear-gradient(to right, #00f2fe, #4facfe);
+    color: #0f0f1a;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.3s;
+    box-shadow: 0 0 12px #00f2fe;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #00f2fe, 0 0 30px #4facfe;
+}
+
+/* Tabla de registros */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border: 1px solid #00ffe1;
+    box-shadow: 0 0 8px rgba(0, 255, 247, 0.1);
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+th, td {
+    padding: 14px;
+    text-align: left;
+    border-bottom: 1px solid #1f1f2e;
+    color: #ffffff;
+}
+
+th {
+    background-color: #00ffc6;
+    color: #0f0f1a;
+}
+
+tr:hover {
+    background-color: rgba(0, 255, 198, 0.1);
+}
+
+.negative {
+    color: #ff4d6d;
+    font-weight: bold;
+}
+
+.positive {
+    color: #32ff7e;
+    font-weight: bold;
+}
+
+/* Media queries móviles */
+@media (max-width: 768px) {
+    #FinanzasTable td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 10px !important;
+        width: 100% !important;
+    }
+
+    #FinanzasTable td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        color: #00fff7;
+        margin-right: 15px;
+        flex-shrink: 0;
+    }
+       
+    body {
+        padding: 0;
+    }
+    
+    .btn-eliminar {
+        font-size: 1em; /* Un poco más pequeño en pantallas chicas */
+        padding: 2px;
+        }    
+    
+    .container {
+        width: 100%;
+        border-radius: 0;
+        border-left: none;
+        border-right: none;
+        padding: 10px;
+        margin: 0;
+    }
+
+    /* Tabla responsiva */
+    table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin: 15px 0;
+    }
+
+    td {
+        padding-left: 45% !important;
+        position: relative;
+        min-height: 40px;
+        vertical-align: middle;
+        font-size: 0.85rem;
+    }
+
+    td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        width: 40% !important;
+        transform: translateY(-50%);
+        top: 50%;
+        font-size: 0.75rem;
+        color: #00fff7;
+        white-space: nowrap;
+    }
+
+    /* Controles de filtro */
+    #monthSelector,
+    #exportExcel {
+        width: 48% !important;
+        margin: 5px 1%;
+        padding: 10px;
+        font-size: 0.85rem;
+        border: 1px solid #00fff7;
+        background-color: #1a1a2e;
+    }
+
+    /* Tarjetas estadísticas */
+    .stats-cards {
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    .stat-card {
+        width: 100%;
+        margin: 5px 0;
+        padding: 15px;
+    }
+
+    .stat-value {
+        font-size: 1.2rem;
+    }
+
+    /* Formulario */
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    input, select {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        font-size: 0.9rem;
+        background: linear-gradient(to right, #00f2fe, #4facfe);
+        box-shadow: 0 0 12px #00f2fe;
+    }
+    /* Corrección específica para tabla móvil */
+    #FinanzasTable {
+        border: none;
+        box-shadow: none;
+        background-color: transparent;
+    }
+
+    #FinanzasTable thead {
+        display: none;
+    }
+
+    #FinanzasTable tr {
+        display: block;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        background-color: rgba(25, 25, 40, 0.85);
+        box-shadow: 0 0 10px rgba(0, 255, 247, 0.2);
+    }
+
+    #FinanzasTable td:last-child {
+        border-bottom: none;
+    }
+
+    td::before {
+        content: attr(data-label);
+        position: static !important;
+        width: auto !important;
+        transform: none !important;
+        font-size: 0.8rem !important;
+        color: #00fff7 !important;
+        padding-right: 50px;
+        flex-shrink: 0;
+    }
+
+    td > span:not([data-label]) {
+        text-align: right;
+        flex-grow: 6;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+}
+
+@media (max-width: 412px) {
+    td {
+        padding-left: 50% !important;
+        font-size: 0.8rem;
+    }
+
+    td::before {
+        font-size: 0.7rem;
+        left: 5px;
+        width: 45% !important;
+    }
+
+    #monthSelector,
+    #exportExcel {
+        width: 100% !important;
+        margin: 5px 0;
+        display: block;
+    }
+
+    .stat-card {
+        padding: 12px;
+    }
+
+    .stat-value {
+        font-size: 1.1rem;
+    }
+
+    button {
+        padding: 10px;
+        font-size: 0.8rem;
+        box-shadow: 0 0 8px #00f2fe;
+    }
+}
+
+.btn-eliminar {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#confirmation-message {
+  text-align: center;
+  padding: 25px;
+  background: rgba(0, 255, 247, 0.1);
+  border-radius: 12px;
+  margin-top: 20px;
+}
+
+#confirmation-message h2 {
+  color: #00ffc6;
+  margin-bottom: 15px;
+}
+
+#confirmation-message p {
+  margin: 10px 0;
+  line-height: 1.5;
+}
+
+#confirmation-message button {
+  margin-top: 20px;
+  background: rgba(0, 255, 247, 0.2);
+  border: 1px solid #00fff7;
+}

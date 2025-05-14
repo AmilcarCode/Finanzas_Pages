@@ -1,0 +1,98 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <title>Registro Financiero</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Autenticación -->
+  <div id="auth-container" class="container">
+    <div id="confirmation-message" style="display: none;">
+        <h2>¡Registro exitoso! 🎉</h2>
+        <p>Hemos enviado un enlace de confirmación a tu correo electrónico.</p>
+        <p>Revisa tu bandeja de entrada y spam.</p>
+        <button onclick="location.reload()">Volver a login</button>
+    </div>
+    <h1>Iniciar Sesión / Registrarse</h1>
+    <form id="auth-form">
+      <div class="form-group">
+        <label>Email:</label>
+        <input type="email" id="auth-email" required />
+      </div>
+      <div class="form-group">
+        <label>Contraseña:</label>
+        <input type="password" id="auth-password" required />
+      </div>
+      <button id="btn-signin" type="button">Iniciar Sesión</button>
+      <button id="btn-signup" type="button">Registrarse</button>
+    </form>
+  </div>
+
+  <!-- App principal -->
+  <div id="app-container" class="container" style="display:none;">
+    <button id="btn-logout">Cerrar sesión</button>
+    <h1>Registro Financiero Mensual</h1>
+    <!-- Estadísticas -->
+    <div class="stats-cards">
+      <div class="stat-card">
+        <h3>📅 Fecha Actual</h3>
+        <p id="currentDate" class="stat-value"></p>
+      </div>
+      <div class="stat-card">
+        <h3>💰 Saldo Actual</h3>
+        <p class="stat-value">$<span id="currentBalance">0</span></p>
+      </div>
+      <div class="stat-card">
+        <h3>📈 Balance Anual</h3>
+        <p class="stat-value">$<span id="annualBalance">0</span></p>
+      </div>
+    </div>
+
+    <!-- Formulario -->
+    <div>
+      <h2>Nuevo Registro</h2>
+      <form id="transactionForm">
+        <div class="form-group">
+          <label>Tipo:</label>
+          <select id="type" required>
+            <option value="ingreso">Ingreso</option>
+            <option value="gasto">Gasto</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Monto:</label>
+          <input type="number" id="amount" step="0.01" required>
+        </div>
+        <div class="form-group">
+          <label>Descripción:</label>
+          <input type="text" id="description">
+        </div>        
+        <button type="submit">Agregar</button>
+      </form>
+    </div>
+
+    <!-- Tabla de registros -->
+    <div>
+      <h2>Registros del Mes</h2>
+      <select id="monthSelector"></select>
+      <button id="exportExcel">Exportar a Excel</button>
+      <table id="FinanzasTable">
+        <thead>
+          <tr>
+            <th>Fecha</th><th>Tipo</th><th>Monto</th><th>Descripción</th><th>Eliminar</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="app.js" defer></script>
+</body>
+</html>
